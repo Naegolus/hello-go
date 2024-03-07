@@ -1,0 +1,20 @@
+
+go mod init github.com/Naegolus/greetings-go
+go mod edit -replace github.com/Naegolus/greetings-go=../greetings-go
+go get github.com/Naegolus/greetings-go
+go mod tidy
+
+go run .
+
+go test
+go test -v
+
+go build
+
+go list -f '{{.Target}}'
+go install
+
+Literature
+- https://go.dev/doc/
+- https://go.dev/doc/tutorial/module-conclusion
+
