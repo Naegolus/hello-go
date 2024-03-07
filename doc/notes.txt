@@ -1,8 +1,12 @@
 
+# Dependencies and Modules
+
 go mod init github.com/Naegolus/greetings-go
 go mod edit -replace github.com/Naegolus/greetings-go=../greetings-go
 go get github.com/Naegolus/greetings-go
 go mod tidy
+
+# Running, Testing and Building
 
 go run .
 
@@ -14,7 +18,18 @@ go build
 go list -f '{{.Target}}'
 go install
 
-Literature
+# Cross compile
+
+env GOOS=linux GOARCH=arm64 go build -o hello-go_arm64
+hello-go_arm64: ELF 64-bit LSB executable, ARM aarch64, version 1 (SYSV), statically linked
+
+env GOOS=linux GOARCH=arm go build -o hello-go_arm
+hello-go_arm: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), statically linked
+
+go tool dist list
+
+# Literature
+
 - https://go.dev/doc/
 - https://go.dev/doc/tutorial/module-conclusion
 
